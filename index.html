@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociedade de Cantores Niegedacht - Cultura Alemã no Sul do Brasil</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== RESET E ESTILOS GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ===== CORES OFICIAIS ===== */
+        :root {
+            --preto-alemao: #000000;
+            --vermelho-alemao: #DD0000;
+            --dourado-alemao: #FFCE00;
+            --azul-baviera: #005CAB;
+            --branco-baviera: #FFFFFF;
+            --azul-escuro: #003366;
+            --cinza-alemao: #4A4A4A;
+            --bege-tradicional: #F5E6D3;
+        }
+
+        /* ===== HEADER COM BANDEIRA ALEMÃ ===== */
+        header {
+            background: linear-gradient(135deg, var(--preto-alemao) 0%, var(--preto-alemao) 33%, var(--vermelho-alemao) 33%, var(--vermelho-alemao) 66%, var(--dourado-alemao) 66%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .logo-area i {
+            font-size: 3rem;
+            color: var(--dourado-alemao);
+        }
+
+        .logo-area h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .logo-area span {
+            font-size: 0.9rem;
+            display: block;
+            color: var(--dourado-alemao);
+        }
+
+        .data-relogio {
+            background-color: rgba(0,0,0,0.7);
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 2px solid var(--dourado-alemao);
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        #data-topo {
+            font-size: 1rem;
+            color: var(--dourado-alemao);
+        }
+
+        #relogio-digital {
+            font-size: 1.8rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        /* ===== NAVEGAÇÃO ===== */
+        nav {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--preto-alemao) 100%);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--dourado-alemao);
+        }
+
+        nav a {
+            color: var(--branco-baviera);
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background-color: rgba(255,255,255,0.1);
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background-color: var(--dourado-alemao);
+            color: var(--preto-alemao);
+            transform: translateY(-3px);
+            border-color: var(--vermelho-alemao);
+        }
+
+        /* ===== BARRA DE PATROCINADORES (ROLAGEM) ===== */
+        .patrocinadores {
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f0f0f0 100%);
+            padding: 20px 0;
+            border-bottom: 4px solid var(--vermelho-alemao);
+            border-top: 4px solid var(--azul-baviera);
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .patrocinadores-wrapper {
+            display: inline-block;
+            animation: scrollPatrocinadores 30s linear infinite;
+        }
+
+        .patrocinadores-wrapper:hover {
+            animation-play-state: paused;
+        }
+
+        .patrocinadores-wrapper span {
+            display: inline-block;
+            margin: 0 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-escuro);
+        }
+
+        .patrocinadores-wrapper i {
+            font-size: 2rem;
+            margin: 0 20px;
+            color: var(--vermelho-alemao);
+            vertical-align: middle;
+        }
+
+        @keyframes scrollPatrocinadores {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .container {
+            max-width: 1300px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Seções */
+        section {
+            background: var(--branco-baviera);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 8px solid var(--azul-baviera);
+            border-right: 3px solid var(--dourado-alemao);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '⚜️';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        h2 {
+            color: var(--azul-escuro);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            border-bottom: 4px solid var(--dourado-alemao);
+            padding-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+
+        h2 i {
+            color: var(--vermelho-alemao);
+            margin-right: 10px;
+        }
+
+        h3 {
+            color: var(--vermelho-alemao);
+            margin: 20px 0 10px;
+            font-size: 1.5rem;
+        }
+
+        /* ===== CARDS (DIRETORIA E CORAL) ===== */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid var(--dourado-alemao);
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,92,171,0.3);
+            border-color: var(--azul-baviera);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--azul-baviera) 0%, var(--azul-escuro) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            border-bottom: 3px solid var(--dourado-alemao);
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h3 {
+            color: var(--azul-escuro);
+            margin: 0 0 5px;
+            font-size: 1.3rem;
+        }
+
+        .card-info p {
+            color: var(--vermelho-alemao);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* ===== SEÇÃO CORAL COM CORES POR VOZ ===== */
+        .secao-voz {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .soprano { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); }
+        .contralto { background: linear-gradient(135deg, var(--azul-baviera) 0%, var(--azul-escuro) 100%); }
+        .tenor { background: linear-gradient(135deg, var(--vermelho-alemao) 0%, #8B0000 100%); }
+        .baixo { background: linear-gradient(135deg, var(--preto-alemao) 0%, #333 100%); }
+
+        .secao-voz h4 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .lista-cantores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .cantor-item {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            border: 2px solid white;
+        }
+
+        /* ===== DASHBOARD FINANCEIRO ===== */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .dashboard-item {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 0 var(--preto-alemao);
+            transition: all 0.3s ease;
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .dashboard-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 0 var(--preto-alemao);
+        }
+
+        .dashboard-item i {
+            font-size: 2.5rem;
+            color: var(--dourado-alemao);
+            margin-bottom: 15px;
+        }
+
+        .dashboard-item h3 {
+            color: var(--dourado-alemao);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .dashboard-valor {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-progresso {
+            width: 100%;
+            height: 15px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progresso-bar {
+            height: 100%;
+            background-color: var(--dourado-alemao);
+            width: 0%;
+            transition: width 1s;
+        }
+
+        /* ===== TABELA DE TRANSPARÊNCIA ===== */
+        .transparencia-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .transparencia-table th {
+            background: var(--azul-escuro);
+            color: var(--dourado-alemao);
+            padding: 15px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .transparencia-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transparencia-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .transparencia-table tr:hover {
+            background-color: rgba(255,206,0,0.1);
+        }
+
+        .receita {
+            color: green;
+            font-weight: 700;
+        }
+
+        .despesa {
+            color: var(--vermelho-alemao);
+            font-weight: 700;
+        }
+
+        /* ===== GALERIA FESTIVA ===== */
+        .galeria-festiva {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .foto-festa {
+            height: 200px;
+            background: linear-gradient(135deg, var(--azul-baviera) 0%, var(--azul-escuro) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 3px solid var(--dourado-alemao);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .foto-festa::before {
+            content: '📸';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .foto-festa:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(221,0,0,0.3);
+            border-color: var(--vermelho-alemao);
+        }
+
+        /* ===== CALENDÁRIO ===== */
+        .calendario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .evento {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 8px solid var(--azul-baviera);
+            border-bottom: 3px solid var(--dourado-alemao);
+            transition: all 0.3s ease;
+        }
+
+        .evento:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(221,0,0,0.2);
+            border-left-color: var(--vermelho-alemao);
+        }
+
+        .evento-data {
+            background: var(--azul-escuro);
+            color: var(--dourado-alemao);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .evento h3 {
+            color: var(--azul-escuro);
+            margin: 10px 0;
+        }
+
+        .evento .local {
+            color: var(--vermelho-alemao);
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* ===== SEÇÃO SECRETARIA ===== */
+        .secretaria-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .secretaria-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .secretaria-box {
+            background: #f8f8f8;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--azul-baviera);
+            transition: all 0.3s ease;
+        }
+
+        .secretaria-box:hover {
+            border-color: var(--dourado-alemao);
+            box-shadow: 0 5px 15px rgba(255,206,0,0.2);
+        }
+
+        .secretaria-box h3 {
+            color: var(--azul-escuro);
+            border-bottom: 2px dashed var(--dourado-alemao);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .secretaria-box ul {
+            list-style: none;
+        }
+
+        .secretaria-box li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .secretaria-box li i {
+            color: var(--vermelho-alemao);
+        }
+
+        .btn-assistir {
+            background: var(--azul-escuro);
+            color: var(--dourado-alemao);
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .btn-assistir:hover {
+            background: var(--vermelho-alemao);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== PLAYER DE ÁUDIO ===== */
+        .audio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .audio-card {
+            background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid var(--dourado-alemao);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .audio-card:hover {
+            border-color: var(--azul-baviera);
+            box-shadow: 0 5px 15px rgba(0,92,171,0.2);
+        }
+
+        .audio-card i {
+            font-size: 3rem;
+            color: var(--vermelho-alemao);
+            margin-bottom: 15px;
+        }
+
+        .audio-card h4 {
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 30px;
+        }
+
+        /* ===== CONTATO ===== */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info {
+            padding: 30px;
+            background: #f8f8f8;
+            border-radius: 15px;
+            border-left: 6px solid var(--azul-escuro);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--azul-escuro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dourado-alemao);
+            font-size: 1.3rem;
+        }
+
+        .contact-text h4 {
+            color: var(--azul-escuro);
+            margin-bottom: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--azul-escuro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dourado-alemao);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: var(--vermelho-alemao);
+            color: white;
+            transform: translateY(-3px);
+            border-color: var(--dourado-alemao);
+        }
+
+        .contact-form {
+            padding: 30px;
+            background: #f8f8f8;
+            border-radius: 15px;
+            border-right: 6px solid var(--vermelho-alemao);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--azul-escuro);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--dourado-alemao);
+            box-shadow: 0 0 0 3px rgba(255,206,0,0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--vermelho-alemao) 0%, var(--azul-escuro) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(221,0,0,0.3);
+        }
+
+        /* ===== MAPA DO GOOGLE MAPS ===== */
+        .mapa-container {
+            margin: 40px 0 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border: 4px solid var(--dourado-alemao);
+            background: #f0f0f0;
+        }
+
+        .mapa-frame {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            display: block;
+        }
+
+        .mapa-info {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            border-top: 3px solid var(--dourado-alemao);
+        }
+
+        .mapa-info i {
+            color: var(--dourado-alemao);
+            margin-right: 10px;
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+
+        .mapa-info a {
+            color: var(--dourado-alemao);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px dotted var(--dourado-alemao);
+        }
+
+        .mapa-info a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background: linear-gradient(135deg, var(--preto-alemao) 0%, var(--azul-escuro) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px 20px;
+            border-top: 5px solid var(--dourado-alemao);
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--dourado-alemao);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--dourado-alemao);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: #999;
+        }
+
+        /* ===== BOTÃO WHATSAPP FIXO ===== */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+            border: 3px solid var(--dourado-alemao);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 25px;
+            }
+            
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .mapa-frame {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <i class="fas fa-music"></i>
+            <div>
+                <h1>Sociedade de Cantores Niegedacht</h1>
+                <span>⚜️ Coqueiros do Sul/RS - Desde 1975 ⚜️</span>
+            </div>
+        </div>
+        <div class="data-relogio">
+            <span id="data-topo"></span>
+            <span id="relogio-digital"></span>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#inicio"><i class="fas fa-home"></i> Início</a>
+        <a href="#diretoria"><i class="fas fa-users"></i> Diretoria</a>
+        <a href="#coral"><i class="fas fa-music"></i> Coral</a>
+        <a href="#transparencia"><i class="fas fa-chart-line"></i> Transparência</a>
+        <a href="#eventos"><i class="fas fa-calendar"></i> Eventos</a>
+        <a href="#secretaria"><i class="fas fa-file-alt"></i> Secretaria</a>
+        <a href="#galeria"><i class="fas fa-images"></i> Galeria</a>
+        <a href="#contato"><i class="fas fa-envelope"></i> Contato</a>
+    </nav>
+
+    <div class="patrocinadores">
+        <div class="patrocinadores-wrapper">
+            <span>🍺 Cervejaria Bavária</span>
+            <i class="fas fa-beer"></i>
+            <span>🥨 Padaria Alemã</span>
+            <i class="fas fa-bread-slice"></i>
+            <span>🏨 Hotel Alpino</span>
+            <i class="fas fa-hotel"></i>
+            <span>🚗 Auto Mecânica München</span>
+            <i class="fas fa-car"></i>
+            <span>🏦 Banco Germânico</span>
+            <i class="fas fa-university"></i>
+            <span>📚 Escola de Alemão</span>
+            <i class="fas fa-book"></i>
+            <!-- Repetição para efeito infinito -->
+            <span>🍺 Cervejaria Bavária</span>
+            <i class="fas fa-beer"></i>
+            <span>🥨 Padaria Alemã</span>
+            <i class="fas fa-bread-slice"></i>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- SEÇÃO INÍCIO -->
+        <section id="inicio">
+            <h2><i class="fas fa-flag"></i> Willkommen! Seja bem-vindo!</h2>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: center;">
+                <div>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">A Sociedade de Cantores Niegedacht é uma das mais tradicionais entidades culturais germânicas do Rio Grande do Sul. Fundada em 1975, nossa missão é preservar e difundir a cultura, música e tradições alemãs através de eventos, apresentações e confraternizações.</p>
+                    <p style="font-size: 1.1rem;">Localizada em Coqueiros do Sul, somos referência na região na promoção da cultura germânica e bávara, mantendo vivas as tradições trazidas pelos imigrantes.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--dourado-alemao), var(--azul-baviera)); border-radius: 20px; padding: 30px; color: white; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                    <i class="fas fa-music" style="font-size: 4rem; margin-bottom: 15px;"></i>
+                    <h3 style="color: var(--preto-alemao);">Próximo Evento</h3>
+                    <p style="font-size: 1.8rem; font-weight: bold; margin: 10px 0;">Festa do Imigrante Alemão 2026</p>
+                    <p style="font-size: 1.2rem;"><i class="fas fa-calendar"></i> 15 de agosto de 2026</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sede Social</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DIRETORIA -->
+        <section id="diretoria">
+            <h2><i class="fas fa-user-tie"></i> Diretoria - Gestão 2026</h2>
+            <div class="grid-cards" id="diretoria-cards"></div>
+        </section>
+
+        <!-- SEÇÃO CORAL -->
+        <section id="coral">
+            <h2><i class="fas fa-microphone-alt"></i> Coral Niegedacht</h2>
+            
+            <div class="audio-gallery">
+                <div class="audio-card">
+                    <i class="fas fa-female"></i>
+                    <h4>Soprano - "Die Gedanken sind frei"</h4>
+                    <audio controls>
+                        <source src="#" type="audio/mpeg">
+                        Seu navegador não suporta áudio.
+                    </audio>
+                </div>
+                <div class="audio-card">
+                    <i class="fas fa-female"></i>
+                    <h4>Contralto - "Kein schöner Land"</h4>
+                    <audio controls>
+                        <source src="#" type="audio/mpeg">
+                        Seu navegador não suporta áudio.
+                    </audio>
+                </div>
+                <div class="audio-card">
+                    <i class="fas fa-male"></i>
+                    <h4>Tenor - "Loreley"</h4>
+                    <audio controls>
+                        <source src="#" type="audio/mpeg">
+                        Seu navegador não suporta áudio.
+                    </audio>
+                </div>
+                <div class="audio-card">
+                    <i class="fas fa-male"></i>
+                    <h4>Baixo - "Am Brunnen vor dem Tore"</h4>
+                    <audio controls>
+                        <source src="#" type="audio/mpeg">
+                        Seu navegador não suporta áudio.
+                    </audio>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-users"></i> Nossos Cantores por Naipe</h3>
+            
+            <div class="secao-voz soprano">
+                <h4><i class="fas fa-female"></i> Soprano (Vozes agudas femininas)</h4>
+                <div class="lista-cantores">
+                    <div class="cantor-item">Ana Weber</div>
+                    <div class="cantor-item">Maria Schmidt</div>
+                    <div class="cantor-item">Clara Mueller</div>
+                    <div class="cantor-item">Helga Klein</div>
+                    <div class="cantor-item">Ilsa Wagner</div>
+                </div>
+            </div>
+
+            <div class="secao-voz contralto">
+                <h4><i class="fas fa-female"></i> Contralto (Vozes graves femininas)</h4>
+                <div class="lista-cantores">
+                    <div class="cantor-item">Greta Fischer</div>
+                    <div class="cantor-item">Lena Schulz</div>
+                    <div class="cantor-item">Marta Braun</div>
+                    <div class="cantor-item">Elke Hoffmann</div>
+                </div>
+            </div>
+
+            <div class="secao-voz tenor">
+                <h4><i class="fas fa-male"></i> Tenor (Vozes agudas masculinas)</h4>
+                <div class="lista-cantores">
+                    <div class="cantor-item">Hans Mueller</div>
+                    <div class="cantor-item">Peter Schneider</div>
+                    <div class="cantor-item">Fritz Keller</div>
+                    <div class="cantor-item">Klaus Richter</div>
+                    <div class="cantor-item">Otto Wagner</div>
+                </div>
+            </div>
+
+            <div class="secao-voz baixo">
+                <h4><i class="fas fa-male"></i> Baixo (Vozes graves masculinas)</h4>
+                <div class="lista-cantores">
+                    <div class="cantor-item">Heinrich Schmidt</div>
+                    <div class="cantor-item">Ludwig Weber</div>
+                    <div class="cantor-item">Karl Fischer</div>
+                    <div class="cantor-item">Friedrich Braun</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO TRANSPARÊNCIA FINANCEIRA -->
+        <section id="transparencia">
+            <h2><i class="fas fa-chart-pie"></i> Portal da Transparência</h2>
+            <p style="margin-bottom: 20px;">Prestação de contas atualizada mensalmente - Exercício 2026</p>
+
+            <div class="dashboard" id="dashboard-financeiro"></div>
+
+            <h3><i class="fas fa-history"></i> Últimas Movimentações</h3>
+            <table class="transparencia-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-transacoes"></tbody>
+            </table>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <div style="background: #f0f0f0; padding: 20px; border-radius: 10px;">
+                    <h4><i class="fas fa-arrow-up" style="color: green;"></i> Receitas por Categoria</h4>
+                    <ul style="list-style: none; margin-top: 15px;">
+                        <li style="margin: 10px 0;">Mensalidades: <strong>R$ 18.450,00</strong> (45%)</li>
+                        <li style="margin: 10px 0;">Patrocínios: <strong>R$ 12.000,00</strong> (29%)</li>
+                        <li style="margin: 10px 0;">Eventos: <strong>R$ 8.500,00</strong> (21%)</li>
+                        <li style="margin: 10px 0;">Outros: <strong>R$ 2.100,00</strong> (5%)</li>
+                    </ul>
+                </div>
+                <div style="background: #f0f0f0; padding: 20px; border-radius: 10px;">
+                    <h4><i class="fas fa-arrow-down" style="color: red;"></i> Despesas por Categoria</h4>
+                    <ul style="list-style: none; margin-top: 15px;">
+                        <li style="margin: 10px 0;">Manutenção: <strong>R$ 8.230,00</strong> (28%)</li>
+                        <li style="margin: 10px 0;">Eventos: <strong>R$ 7.450,00</strong> (26%)</li>
+                        <li style="margin: 10px 0;">Utilidades: <strong>R$ 5.120,00</strong> (18%)</li>
+                        <li style="margin: 10px 0;">Administrativo: <strong>R$ 4.890,00</strong> (17%)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; background: var(--azul-escuro); padding: 25px; border-radius: 15px; color: white;">
+                <h4 style="color: var(--dourado-alemao); margin-bottom: 20px;"><i class="fas fa-download"></i> Documentos para Download</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <a href="#" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,206,0,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                        <i class="fas fa-file-pdf"></i> Balancete Jan/26
+                    </a>
+                    <a href="#" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,206,0,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                        <i class="fas fa-file-excel"></i> Prestação 2025
+                    </a>
+                    <a href="#" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,206,0,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                        <i class="fas fa-file-word"></i> Orçamento 2026
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO EVENTOS -->
+        <section id="eventos">
+            <h2><i class="fas fa-calendar-alt"></i> Calendário de Festividades 2026</h2>
+            <div class="calendario-grid" id="calendario-eventos"></div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="submit-btn" style="width: auto; padding: 15px 40px; display: inline-block;" onclick="alert('Ingressos disponíveis em breve!')">
+                    <i class="fas fa-ticket-alt"></i> Garanta seu ingresso
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SECRETARIA -->
+        <section id="secretaria">
+            <h2><i class="fas fa-file-signature"></i> Secretaria</h2>
+            
+            <div class="secretaria-grid">
+                <div class="secretaria-box">
+                    <h3><i class="fas fa-calendar-check"></i> Reuniões Programadas</h3>
+                    <ul id="lista-reunioes"></ul>
+                </div>
+                
+                <div class="secretaria-box">
+                    <h3><i class="fas fa-comments"></i> Pautas em Debate</h3>
+                    <ul id="lista-pautas"></ul>
+                </div>
+                
+                <div class="secretaria-box">
+                    <h3><i class="fas fa-video"></i> Reuniões Online</h3>
+                    <ul id="links-online"></ul>
+                </div>
+                
+                <div class="secretaria-box">
+                    <h3><i class="fas fa-record-vinyl"></i> Sessões Gravadas</h3>
+                    <ul id="sessoes-gravadas"></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO GALERIA FESTIVA -->
+        <section id="galeria">
+            <h2><i class="fas fa-camera-retro"></i> Galeria Festiva</h2>
+            <div class="galeria-festiva" id="galeria-festiva"></div>
+        </section>
+
+        <!-- SEÇÃO LOCALIZAÇÃO - GOOGLE MAPS -->
+        <section id="localizacao">
+            <h2><i class="fas fa-map-marked-alt"></i> Nossa Localização</h2>
+            <p style="margin-bottom: 20px;">Venha nos visitar! Estamos localizados no coração de Coqueiros do Sul, na região noroeste do Rio Grande do Sul.</p>
+            
+            <div class="mapa-container">
+                <iframe class="mapa-frame" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56112.649422142!2d-52.8166131!3d-28.11884855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fdda0e5e28f8d3%3A0x9b1d8b8b8b8b8b8b!2sCoqueiros%20do%20Sul%2C%20RS%2C%2099528-000!5e0!3m2!1spt-BR!2sbr!4v1712345678901!5m2!1spt-BR!2sbr" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="mapa-info">
+                    <i class="fas fa-map-pin"></i> 
+                    <strong>Sociedade de Cantores Niegedacht</strong> - Rua Pedro Weber, 100 - Centro, Coqueiros do Sul/RS - CEP 99528-000
+                    <br>
+                    <a href="https://www.google.com/maps/dir//Coqueiros+do+Sul,+RS/@-28.1188486,-52.8166131,12z" target="_blank">
+                        <i class="fas fa-directions"></i> Traçar rota no Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; background: #f8f8f8; padding: 25px; border-radius: 15px; border-left: 6px solid var(--azul-baviera);">
+                <h3 style="color: var(--azul-escuro); margin-top: 0;"><i class="fas fa-info-circle"></i> Como Chegar</h3>
+                <p>Coqueiros do Sul está localizada a 312 km de Porto Alegre, na região noroeste do estado [citation:1]. A cidade é acessível pelas rodovias BR-386 e RS-332.</p>
+                <p style="margin-top: 15px;"><i class="fas fa-clock" style="color: var(--vermelho-alemao);"></i> <strong>Horário de funcionamento da secretaria:</strong> Segunda a Sexta: 14h às 18h | Sábados: 9h às 12h</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CONTATO -->
+        <section id="contato">
+            <h2><i class="fas fa-address-card"></i> Entre em Contato</h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Endereço</h4>
+                            <p>Rua Pedro Weber, 100 - Centro<br>Coqueiros do Sul/RS - CEP 99528-000 [citation:4]</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telefone</h4>
+                            <p>(54) 3316-1300<br>(54) 99999-9999</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>E-mail</h4>
+                            <p>contato@niegedacht.com.br<br>secretaria@niegedacht.com.br</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sexta: 14h às 18h<br>Sábados: 9h às 12h</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px;">Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" onsubmit="return handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto" name="assunto">
+                                <option value="">Selecione</option>
+                                <option value="info">Informações sobre a sociedade</option>
+                                <option value="evento">Quero participar de um evento</option>
+                                <option value="coral">Quero cantar no coral</option>
+                                <option value="associar">Quero me associar</option>
+                                <option value="patrocinio">Proposta de patrocínio</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-music"></i> Sociedade de Cantores Niegedacht</h3>
+                <p>Preservando a cultura alemã através da música desde 1975. Uma história de dedicação e harmonia.</p>
+                <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Rua Pedro Weber, 100 - Centro<br>Coqueiros do Sul/RS - CEP 99528-000</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Início</a></li>
+                    <li><a href="#diretoria"><i class="fas fa-chevron-right"></i> Diretoria</a></li>
+                    <li><a href="#coral"><i class="fas fa-chevron-right"></i> Coral</a></li>
+                    <li><a href="#transparencia"><i class="fas fa-chevron-right"></i> Transparência</a></li>
+                    <li><a href="#eventos"><i class="fas fa-chevron-right"></i> Eventos</a></li>
+                    <li><a href="#localizacao"><i class="fas fa-chevron-right"></i> Localização</a></li>
+                    <li><a href="#contato"><i class="fas fa-chevron-right"></i> Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Horário de Ensaios</h3>
+                <ul class="footer-links">
+                    <li><i class="far fa-calendar"></i> Terças: 19:30 - 21:30</li>
+                    <li><i class="far fa-calendar"></i> Quintas: 19:30 - 21:30</li>
+                    <li><i class="far fa-calendar"></i> Sábados: 15:00 - 17:00</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Receba novidades e eventos</p>
+                <form style="display: flex; gap: 10px;" onsubmit="event.preventDefault(); alert('Inscrição realizada com sucesso!')">
+                    <input type="email" placeholder="Seu e-mail" style="flex: 1; padding: 10px; border: none; border-radius: 5px;" required>
+                    <button type="submit" style="background: var(--dourado-alemao); color: var(--preto-alemao); border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© <span id="ano-atual"></span> Sociedade de Cantores Niegedacht - Todos os direitos reservados</p>
+            <p style="margin-top: 10px; color: var(--dourado-alemao);">⚜️ "A música que une gerações" ⚜️</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5554999999999" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        (function() {
+            // ===== DATA E RELÓGIO =====
+            function atualizarDataHora() {
+                const agora = new Date();
+                const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('data-topo').textContent = agora.toLocaleDateString('pt-BR', opcoesData);
+                document.getElementById('relogio-digital').textContent = agora.toLocaleTimeString('pt-BR');
+            }
+            setInterval(atualizarDataHora, 1000);
+            atualizarDataHora();
+
+            // ===== ANO NO RODAPÉ =====
+            document.getElementById('ano-atual').textContent = new Date().getFullYear();
+
+            // ===== DIRETORIA =====
+            const diretoria = [
+                { nome: 'Hans Schmidt', funcao: 'Presidente', foto: '👨‍🦳' },
+                { nome: 'Greta Weber', funcao: 'Vice-Presidente', foto: '👩‍🦱' },
+                { nome: 'Friedrich Braun', funcao: 'Tesoureiro', foto: '👨‍🦰' },
+                { nome: 'Liesl Wagner', funcao: 'Secretária', foto: '👩‍🦳' },
+                { nome: 'Karl Fischer', funcao: 'Diretor Musical', foto: '👨‍🎓' }
+            ];
+
+            const diretoriaDiv = document.getElementById('diretoria-cards');
+            diretoria.forEach(pessoa => {
+                diretoriaDiv.innerHTML += `
+                    <div class="card">
+                        <div class="card-img">${pessoa.foto}</div>
+                        <div class="card-info">
+                            <h3>${pessoa.nome}</h3>
+                            <p>${pessoa.funcao}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // ===== DASHBOARD FINANCEIRO =====
+            const dashboard = document.getElementById('dashboard-financeiro');
+            const contas = [
+                { nome: 'Caixa Geral', valor: 15780.50, meta: 20000, icone: 'fa-wallet' },
+                { nome: 'Fundo Festas', valor: 5230.00, meta: 10000, icone: 'fa-glass-cheers' },
+                { nome: 'Manutenção', valor: 3420.75, meta: 5000, icone: 'fa-tools' },
+                { nome: 'Projetos', valor: 8900.00, meta: 15000, icone: 'fa-project-diagram' }
+            ];
+
+            contas.forEach(item => {
+                const percentual = (item.valor / item.meta) * 100;
+                dashboard.innerHTML += `
+                    <div class="dashboard-item">
+                        <i class="fas ${item.icone}"></i>
+                        <h3>${item.nome}</h3>
+                        <div class="dashboard-valor">R$ ${item.valor.toFixed(2)}</div>
+                        <div class="dashboard-progresso">
+                            <div class="progresso-bar" style="width: ${percentual}%;"></div>
+                        </div>
+                        <small>${percentual.toFixed(0)}% da meta</small>
+                    </div>
+                `;
+            });
+
+            // ===== TABELA DE TRANSAÇÕES =====
+            const transacoes = [
+                { data: '15/02/2026', descricao: 'Mensalidade associados', categoria: 'Mensalidades', tipo: 'receita', valor: 3450.00 },
+                { data: '10/02/2026', descricao: 'Pagamento energia elétrica', categoria: 'Utilidades', tipo: 'despesa', valor: 520.00 },
+                { data: '08/02/2026', descricao: 'Patrocínio - Empresa ABC', categoria: 'Patrocínios', tipo: 'receita', valor: 5000.00 },
+                { data: '05/02/2026', descricao: 'Compra material de limpeza', categoria: 'Manutenção', tipo: 'despesa', valor: 234.50 },
+                { data: '01/02/2026', descricao: 'Aluguel do salão', categoria: 'Aluguéis', tipo: 'receita', valor: 1200.00 }
+            ];
+
+            const tabelaTransacoes = document.getElementById('tabela-transacoes');
+            transacoes.forEach(trans => {
+                tabelaTransacoes.innerHTML += `
+                    <tr>
+                        <td>${trans.data}</td>
+                        <td>${trans.descricao}</td>
+                        <td>${trans.categoria}</td>
+                        <td>${trans.tipo === 'receita' ? 'Receita' : 'Despesa'}</td>
+                        <td class="${trans.tipo === 'receita' ? 'receita' : 'despesa'}">R$ ${trans.valor.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            // ===== CALENDÁRIO =====
+            const calendario = document.getElementById('calendario-eventos');
+            const eventos = [
+                { data: '15/06/2026', desc: 'Festival de Cantos Natalinos', local: 'Igreja Luterana' },
+                { data: '20/07/2026', desc: 'Noite da Cerveja Artesanal', local: 'Sede Social' },
+                { data: '10/08/2026', desc: 'Apresentação Coral', local: 'Parque Municipal' },
+                { data: '05/09/2026', desc: 'Festa do Colono Alemão', local: 'Centro de Eventos' }
+            ];
+
+            eventos.forEach(ev => {
+                calendario.innerHTML += `
+                    <div class="evento">
+                        <span class="evento-data"><i class="far fa-calendar-alt"></i> ${ev.data}</span>
+                        <h3>${ev.desc}</h3>
+                        <p>Apresentação especial do coral com repertório tradicional alemão.</p>
+                        <p class="local"><i class="fas fa-map-marker-alt"></i> ${ev.local}</p>
+                    </div>
+                `;
+            });
+
+            // ===== SECRETARIA =====
+            const reunioes = [
+                '<i class="fas fa-calendar-day"></i> 25/06 - Reunião Diretoria (19:30)',
+                '<i class="fas fa-calendar-day"></i> 30/06 - Assembleia Geral (20:00)',
+                '<i class="fas fa-calendar-day"></i> 05/07 - Planejamento Festa (19:30)'
+            ];
+            
+            const pautas = [
+                '<i class="fas fa-file-alt"></i> Reforma da Sede',
+                '<i class="fas fa-file-alt"></i> Calendário 2026',
+                '<i class="fas fa-file-alt"></i> Parcerias Culturais',
+                '<i class="fas fa-file-alt"></i> Novos Uniformes'
+            ];
+            
+            const links = [
+                '<a href="#" class="btn-assistir"><i class="fas fa-video"></i> Reunião 25/06</a>',
+                '<a href="#" class="btn-assistir"><i class="fas fa-video"></i> Reunião 30/06</a>'
+            ];
+            
+            const gravadas = [
+                '<a href="#" class="btn-assistir"><i class="fas fa-play"></i> Assembleia Maio</a>',
+                '<a href="#" class="btn-assistir"><i class="fas fa-play"></i> Ensaio Coral</a>',
+                '<a href="#" class="btn-assistir"><i class="fas fa-play"></i> Apresentação Abril</a>'
+            ];
+
+            document.getElementById('lista-reunioes').innerHTML = reunioes.map(r => `<li>${r}</li>`).join('');
+            document.getElementById('lista-pautas').innerHTML = pautas.map(p => `<li>${p}</li>`).join('');
+            document.getElementById('links-online').innerHTML = links.map(l => `<li style="list-style: none; padding: 5px 0;">${l}</li>`).join('');
+            document.getElementById('sessoes-gravadas').innerHTML = gravadas.map(g => `<li style="list-style: none; padding: 5px 0;">${g}</li>`).join('');
+
+            // ===== GALERIA FESTIVA =====
+            const galeria = document.getElementById('galeria-festiva');
+            const festas = ['Oktoberfest', 'Natal Alemão', 'Páscoa', 'Festa do Colono', 'Sábado Cultural', 'Coral em Concerto'];
+            
+            festas.forEach(festa => {
+                galeria.innerHTML += `<div class="foto-festa">🎉 ${festa}</div>`;
+            });
+
+            // ===== SMOOTH SCROLL =====
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+
+        // ===== HANDLE FORM SUBMIT =====
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+            document.getElementById('contactForm').reset();
+            return false;
+        }
+    </script>
+</body>
+</html>
